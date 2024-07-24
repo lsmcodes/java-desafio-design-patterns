@@ -1,5 +1,8 @@
 package io.github.lsmcodes.gof.model.address;
 
+import org.modelmapper.ModelMapper;
+
+import io.github.lsmcodes.gof.dto.model.address.AddressDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -27,5 +30,9 @@ public class Address {
         private String gia;
         private String ddd;
         private String siafi;
+
+        public AddressDTO entityToDTO() {
+                return new ModelMapper().map(this, AddressDTO.class);
+        }
 
 }

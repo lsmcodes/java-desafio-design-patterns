@@ -1,5 +1,8 @@
 package io.github.lsmcodes.gof.model.client;
 
+import org.modelmapper.ModelMapper;
+
+import io.github.lsmcodes.gof.dto.model.client.ClientDTO;
 import io.github.lsmcodes.gof.model.address.Address;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,5 +28,9 @@ public class Client {
 
         @ManyToOne
         private Address address;
+
+        public ClientDTO entityToDTO() {
+                return new ModelMapper().map(this, ClientDTO.class);
+        }
 
 }

@@ -1,5 +1,8 @@
 package io.github.lsmcodes.gof.dto.model.client;
 
+import org.modelmapper.ModelMapper;
+
+import io.github.lsmcodes.gof.model.client.Client;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,5 +20,9 @@ public class ClientRegisterDTO {
 
         @NotNull(message = "CEP cannot be null")
         private String cep;
+
+        public Client DTOToEntity() {
+                return new ModelMapper().map(this, Client.class);
+        }
 
 }

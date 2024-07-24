@@ -1,5 +1,8 @@
 package io.github.lsmcodes.gof.dto.model.address;
 
+import org.modelmapper.ModelMapper;
+
+import io.github.lsmcodes.gof.model.address.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +25,9 @@ public class AddressDTO {
         private String gia;
         private String ddd;
         private String siafi;
+
+        public Address DTOToEntity() {
+                return new ModelMapper().map(this, Address.class);
+        }
 
 }
